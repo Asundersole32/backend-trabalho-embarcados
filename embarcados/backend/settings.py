@@ -132,7 +132,7 @@ MQTT_TOPICS = {
 }
 
 
-ML_MODEL_PATH = os.path.join(BASE_DIR, 'modelo_random_forest.joblib')
+ML_MODEL_PATH = os.environ.get('ML_MODEL_PATH', '/app/modelo_chuva_manaus.joblib')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

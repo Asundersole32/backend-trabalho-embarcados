@@ -7,3 +7,4 @@ drf-spectacular
 django-cors-headers
 djangorestframework-simplejwt
 twilio
+xgboost
