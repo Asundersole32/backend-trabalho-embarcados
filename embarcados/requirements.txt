@@ -1,0 +1,9 @@
+Django
+djangorestframework
+mysqlclient
+paho-mqtt
+joblib
+drf-spectacular
+django-cors-headers
+djangorestframework-simplejwt
+twilio
