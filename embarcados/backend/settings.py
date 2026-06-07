@@ -61,6 +61,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8080",
     "http://localhost:3000",      # Grafana
     "http://localhost:8000",      # próprio backend
+    "http://localhost:5173",      #localHost do front-end
 ]
 
 CORS_ALLOW_METHODS = [
@@ -140,6 +141,11 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
+
+AUTHENTICATION_BACKENDS = [
+    'core.backends.EmailOrUsernameBackend',
+    'django.contrib.auth.backends.ModelBackend',   # fallback
+]
 
 from datetime import timedelta
 SIMPLE_JWT = {
