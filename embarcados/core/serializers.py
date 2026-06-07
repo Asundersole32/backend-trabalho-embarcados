@@ -73,3 +73,8 @@ class ActuatorSerializer(serializers.ModelSerializer):
         model = Actuator
         fields = ['id', 'nome', 'tipo', 'status', 'created_at']
         read_only_fields = ['created_at']
+
+class ActuatorLogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ActuatorLog
+        fields = '__all__'
