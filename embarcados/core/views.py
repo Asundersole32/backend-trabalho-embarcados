@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status, permissions, viewsets
 from django.contrib.auth.models import User
 from django.conf import settings
-from core.models import SensorLog, Alert, ManualControl, Classification, Sensor, Actuator
+from core.models import SensorLog, Alert, ManualControl, Classification, Sensor, Actuator, ActuatorLog
 from core.serializers import ProfileSerializer, SensorDataSerializer, ActuatorDataSerializer, AlertSerializer, ManualControlSerializer, UserRegistrationSerializer, SensorLogSerializer, ClassificationSerializer, SensorSerializer, ActuatorSerializer
 from core.services.mqtt_client import mqtt_client
 import json
@@ -162,3 +162,10 @@ class UserProfileView(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class UserActuatorLogsView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    def get(self, request):
+        logs = ActuatorLog.objects.filter(user=request.user).order_by('-created_at')[:50]
+        serializer = ActuatorDataSerializer(logs, many=True)
+        return Response(serializer.data)

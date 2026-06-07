@@ -3,7 +3,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from core.views import (
     SensorDataView, ActuatorDataView, AlertsDataView, ManualControlView,
     RegisterView, UserSensorLogsView, UserClassificationsView, UserAlertsView,
-    SensorViewSet, ActuatorViewSet, UserProfileView
+    SensorViewSet, ActuatorViewSet, UserProfileView, UserActuatorLogsView
 )
 from rest_framework.routers import DefaultRouter
 
@@ -32,5 +32,6 @@ urlpatterns = [
     path('api/my/classifications', UserClassificationsView.as_view(), name='my-classifications'),
     path('api/my/alerts', UserAlertsView.as_view(), name='my-alerts'),
     path('api/my/profile', UserProfileView.as_view(), name='my-profile'),
+    path('api/my/actuator-logs', UserActuatorLogsView.as_view(), name='my-actuator-logs'),
     path('api/', include(router.urls))
 ]
